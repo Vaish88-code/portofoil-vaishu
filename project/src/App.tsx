@@ -783,7 +783,7 @@ function App() {
                 animate={inView ? "visible" : "hidden"}
               >
                 {/* Timeline Line */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-indigo-600 to-purple-600 rounded-full hidden lg:block" />
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-3/4 bg-gradient-to-b from-indigo-600 to-purple-600 rounded-full hidden lg:block" />
                 
                 <div className="space-y-12 lg:space-y-24">
                   {roadmapItems.map((item, index) => (
