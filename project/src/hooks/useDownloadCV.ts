@@ -50,7 +50,7 @@ export const useDownloadCV = (): UseDownloadCVReturn => {
       
       // Fallback: Open in new tab if download fails
       try {
-        window.open('/Vaishnavi Resume (2).docx', '_blank');
+        window.open('/resume vaishu.docx', '_blank');
         console.log('Fallback: Opening CV in new tab');
       } catch (fallbackError) {
         console.error('Fallback also failed:', fallbackError);

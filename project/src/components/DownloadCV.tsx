@@ -16,7 +16,7 @@ const DownloadCV: React.FC<DownloadCVProps> = ({
   const handleDownloadCV = () => {
     // Create a simple download link and click it
     const link = document.createElement('a');
-    link.href = '/resume%20vaishu.docx';
+    link.href = '/resume vaishu.docx';
     link.download = 'Vaishnavi_Gaikwad_Resume.docx';
     document.body.appendChild(link);
     link.click();
