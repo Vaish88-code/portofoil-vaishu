@@ -5,7 +5,6 @@ import emailjs from '@emailjs/browser';
 import { 
   Github, 
   ExternalLink, 
-  Download, 
   Mail, 
   Linkedin, 
   Menu,
@@ -21,20 +20,13 @@ import {
   Briefcase,
   Phone
 } from 'lucide-react';
+import Logo from './components/Logo';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const handleDownloadResume = () => {
-    // Create a link element and trigger download
-    const link = document.createElement('a');
-    link.href = '/resume vaishu.docx';
-    link.download = 'Vaishnavi_Gaikwad_Resume.docx';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+
 
   const [isHovering, setIsHovering] = useState(false);
 
@@ -266,6 +258,20 @@ function App() {
           style={{ top: '60%', right: '10%' }}
         />
         
+        {/* Logo Watermark */}
+        <motion.div
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-5"
+          animate={{
+            rotate: [0, 360],
+          }}
+          transition={{ 
+            duration: 60,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        >
+          <Logo size="lg" />
+        </motion.div>
       </div>
 
       {/* Navigation */}
@@ -281,9 +287,8 @@ function App() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-2xl font-bold text-indigo-600"
             >
-              Vaishnavi
+              <Logo size="md" />
             </motion.div>
 
             {/* Desktop Navigation */}
@@ -357,14 +362,15 @@ function App() {
             transition={{ duration: 0.8 }}
             className="text-center lg:text-left"
           >
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-indigo-600 font-medium mb-4"
+              className="flex items-center justify-center lg:justify-start gap-3 mb-4"
             >
-              Hello, I'm
-            </motion.p>
+              <Logo size="sm" />
+              <span className="text-indigo-600 font-medium">Hello, I'm</span>
+            </motion.div>
             
             <motion.h1 
               className="text-5xl lg:text-6xl font-bold mb-6 text-gray-900"
@@ -397,24 +403,16 @@ function App() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex justify-center lg:justify-start"
             >
               <motion.button
                 onClick={() => scrollToSection('projects')}
-                className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                whileHover={{ scale: 1.05 }}
+                className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg flex items-center gap-2"
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
+                <ExternalLink size={20} />
                 View Projects
-              </motion.button>
-              <motion.button 
-                onClick={handleDownloadResume}
-                className="border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 hover:shadow-lg"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Download size={20} />
-                Download CV
               </motion.button>
             </motion.div>
           </motion.div>
@@ -1206,6 +1204,12 @@ function App() {
                 animate={inView ? "visible" : "hidden"}
                 className="text-center mb-16"
               >
+                <motion.div
+                  className="flex justify-center mb-4"
+                  variants={fadeInUp}
+                >
+                  <Logo size="md" />
+                </motion.div>
                 <motion.h2 
                   className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900"
                   variants={fadeInUp}
@@ -1244,7 +1248,10 @@ function App() {
                   initial="hidden"
                   animate={inView ? "visible" : "hidden"}
                 >
-                  <h3 className="text-2xl font-bold mb-6 text-gray-900">Contact Info</h3>
+                  <div className="flex items-center gap-3 mb-6">
+                    <Logo size="sm" />
+                    <h3 className="text-2xl font-bold text-gray-900">Contact Info</h3>
+                  </div>
                   
                   <motion.div 
                     className="space-y-6"
@@ -1320,12 +1327,15 @@ function App() {
                   transition={{ duration: 0.3 }}
                 >
 
-                  <motion.h3 
-                    className="text-2xl font-bold mb-6 text-gray-900"
+                  <motion.div
+                    className="flex items-center gap-3 mb-6"
                     variants={fadeInUp}
                   >
-                    Send Message
-                  </motion.h3>
+                    <Logo size="sm" />
+                    <h3 className="text-2xl font-bold text-gray-900">
+                      Send Message
+                    </h3>
+                  </motion.div>
                   
                   <motion.div 
                     className="space-y-6"
@@ -1445,12 +1455,17 @@ function App() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <motion.p 
-              className="text-gray-400 mb-4 md:mb-0"
+            <motion.div 
+              className="flex flex-col items-center md:items-start mb-4 md:mb-0"
               variants={fadeInUp}
             >
-              © 2024 Vaishnavi Gaikwad. All rights reserved.
-            </motion.p>
+              <div className="mb-2">
+                <Logo size="sm" />
+              </div>
+              <p className="text-gray-400 text-sm">
+                © 2024 Vaishnavi Gaikwad. All rights reserved.
+              </p>
+            </motion.div>
             
             <motion.div 
               className="flex space-x-6"
