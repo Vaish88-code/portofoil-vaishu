@@ -185,6 +185,15 @@ function App() {
       live: 'https://serene-hamster-36c26d.netlify.app/',
       image: 'https://images.pexels.com/photos/265722/pexels-photo-265722.jpeg?auto=compress&cs=tinysrgb&w=500'
     }
+    ,
+    {
+      title: 'AquaFlow',
+      description: 'AquaFlow is a smart water jar delivery platform that connects users with nearby suppliers, enabling quick online orders, doorstep delivery, and easy digital payments. It simplifies water supply management for both customers and shopkeepers.',
+      stack: ['React JS', 'Tailwind CSS'],
+      github: '#',
+      live: 'https://aquaflowi.netlify.app/',
+      image: 'https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg?auto=compress&cs=tinysrgb&w=500'
+    }
   ];
 
   // Animation variants
